@@ -26,12 +26,21 @@
                {{Form::label('Software_Cost','Software Cost')}}
                 {{Form::text('Software Cost','0',['class'=>'form-control','placeholder'=>'Enter Cost'])}}
              </div>
+             <div class="form-group" id="text2" style="display: none">
+                {{Form::label('Department_Paying','Funded by?')}}
+                 {{Form::text('Payment approved by?','N/A',['class'=>'form-control','placeholder'=>'Enter who the payment will be approved by'])}}
+              </div>
+             <div class="form-group">
+                {{Form::label('Module_Code','Module Code')}}
+                {{Form::text('Module Code','',['class'=>'form-control','placeholder'=>'Enter Module Code'])}}
+            </div>
          <script>
             function change(){
         
            
                 if(document.getElementById('paid').checked) {
                     document.getElementById("text").style.display = "block";
+                    document.getElementById("text2").style.display = "block";
             // document.querySelector("paid").innerHTML+= '<p1>Hello</p1'
             //     <div class="form-group">
             //     {{Form::label('Software_Version','Software Version')}}
@@ -42,7 +51,7 @@
              }
              else if(document.getElementById('free').checked) {
                 document.getElementById("text").style.display = "none";
-
+                document.getElementById("text2").style.display = "none";
                
             
              }

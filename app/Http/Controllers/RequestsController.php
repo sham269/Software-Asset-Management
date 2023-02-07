@@ -68,7 +68,8 @@ class RequestsController extends Controller
             'Software_Link'=>'required',
             'cost' => 'required',
             'Software_Cost' => 'required|numeric',
-            'Software_Reason'=> 'required'
+            'Software_Reason'=> 'required',
+            'Module_Code'=>'required'
            
         
         ]);
@@ -81,6 +82,9 @@ class RequestsController extends Controller
         $requests->Software_Link = $request->input('Software_Link');
         $requests['category'] = $request->input('cost');
         $requests->Software_Cost = $request->input('Software_Cost');
+        $requests->Department_Paying = $request->input('Department_Paying');
+        $requests->Module_Code = $request->input('Module_Code');
+        $requests->DS_Notes = $request->input('DS_Notes')->nullable();
         $requests->Request_stage = 'Submitted';
         
     

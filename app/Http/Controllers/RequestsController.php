@@ -32,8 +32,10 @@ class RequestsController extends Controller
         else if(Auth::user()->is_admin==1){
         
             $rejected_software= Requests::where('Request_Stage','Rejected')->get();
+            $in_Progress = Requests::where('Request_Stage','In Progress')->get();
             $softwares = Requests::all();
-            return view('pages.admin')->with('softwares',$softwares)->with('rejected_software',$rejected_software);
+            return view('pages.admin')->with('softwares',$softwares)->with('rejected_software',$rejected_software)
+            ->with('in_Progress',$in_Progress);
         }
         
 

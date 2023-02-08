@@ -3,7 +3,7 @@
 <div class="container-fluid text-center">
     
  
-    <h1>Admin</h1>
+    <h1>Admin Panel</h1>
     {{-- <div class="row row-cols-1 row-cols-md-2">
       <div class="col mb-4">
       <div class="card bg-light mb-3" style="max-width: 18rem;">
@@ -53,10 +53,10 @@
       </div>
       <div class="col mb-4">
         <div class="card card bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header bg-warning ">Requests Rejected</div>
+          <div class="card-header bg-warning ">In Progress Requests</div>
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <h5 class="card-title">{{$in_Progress->count()}}</h5>
+            <p class="card-text">Requests in Progress </p>
             <div class="card-footer bg-transparent border-warning">
               <a href="#" class="btn btn-warning">View all</a>
             </div>

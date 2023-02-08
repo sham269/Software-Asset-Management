@@ -58,15 +58,16 @@
                   <div class="card-body text-success">
                     
                     <h5 class="card-title">Software Version: {{$software->Software_Version}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{$software->Request_Stage}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Module Code: {{$software->Module_Code}}</h6>
                     <p class="card-text">{{$software->Software_Reason}}</p>
-                   
+                    
                     <div class="container">
                       {!! Form::open(['action' => ['App\Http\Controllers\RequestsController@destroy',$software->id],'method'=>'DELETE','class'=>'float-mid']) !!}
                       <a href="/edit_php/{{$software->id}}" class="btn btn-primary">Edit</a>
                       {{Form::submit('Delete', ['class'=>'btn btn-danger'])}}
                       {!! Form::close() !!}
                       </div>
+                      <div class="card-footer bg-transparent text-muted">Request Stage: {{$software->Request_Stage}}</div>
                   </div>
                   
                 </div>

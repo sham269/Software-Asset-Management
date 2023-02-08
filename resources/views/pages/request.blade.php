@@ -28,7 +28,7 @@
              </div>
              <div class="form-group" id="text2" style="display: none">
                 {{Form::label('Department_Paying','Funded by?')}}
-                 {{Form::text('Payment approved by?','N/A',['class'=>'form-control','placeholder'=>'Enter who the payment will be approved by'])}}
+                 {{Form::text('Department Paying','N/A',['class'=>'form-control','placeholder'=>'Enter who the payment will be approved by'])}}
               </div>
              <div class="form-group">
                 {{Form::label('Module_Code','Module Code')}}

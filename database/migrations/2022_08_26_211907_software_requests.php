@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('Software_Link');
             $table->string('cost');
             $table->decimal('Software_Cost', 8, 2)->default('0');
-            $table->string('Department_Paying');
+            $table->string('Department_Paying')->default('N/A');
             $table->string('Module_Code');
             $table->mediumText('DS_Notes')->nullable();
             $table->mediumText('Software_Reason');

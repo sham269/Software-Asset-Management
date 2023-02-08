@@ -84,7 +84,7 @@ class RequestsController extends Controller
         $requests->Software_Cost = $request->input('Software_Cost');
         $requests->Department_Paying = $request->input('Department_Paying');
         $requests->Module_Code = $request->input('Module_Code');
-        $requests->DS_Notes = $request->input('DS_Notes')->nullable();
+        $requests->DS_Notes = $request->input('DS_Notes');
         $requests->Request_stage = 'Submitted';
         
     

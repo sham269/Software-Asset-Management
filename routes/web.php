@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\AdminCOntroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::middleware(['auth','is_admin'])->group(function(){
     Route::get('/admin','App\Http\Controllers\RequestsController@index');
     Route::get('/available','App\Http\Controllers\PagesController@available');
     Route::get('posts/create','App\Http\Controllers\PostsController@create');
+    Route::get('/edit_php/{id}','App\Http\Controllers\RequestsController@update');
+    Route::get('Admin/AllRequest','App\Http\Controllers\AdminCOntroller@index');
+    Route::resource('/Admin', 'App\Http\Controllers\AdminCOntroller');
 });
 
 Route::middleware(['auth','is_loggedin'])->group(function(){

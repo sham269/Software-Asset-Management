@@ -12,10 +12,7 @@
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
           <p class="text-footer text-muted">{{$software->Request_Stage}}</p>
-          {!! Form::open(['action' => ['App\Http\Controllers\AdminCOntroller@update',$software->id],'method'=>'PUT']) !!}
-          {!! Form::submit('In Progress', ['class'=>'btn btn-warning form-control','name'=>'submit[Inprogress]','value'=>'Inprogress'])!!}
-          {!! Form::submit('Reject', ['class'=>'btn btn-success form-control','name'=>'submit[Reject]','value'=>'Reject'])!!}
-    {!! Form::close() !!}
+        
         </div>
       </div>   
     @endforeach

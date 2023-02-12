@@ -15,6 +15,15 @@
         {{Form::text('Software Link','',['class'=>'form-control','placeholder'=>'Enter Link to software'])}}
     </div>
     <div class="form-group">
+        <label>Choose a OS:</label>
+    <select class="form-control" name="OS" required="required">
+    
+        <option value="windows">Windows</option>
+        <option value="mac">Mac</option>
+        <option value="linux">Linux</option>
+    </select>
+    </div>
+    <div class="form-group">
         {{Form::label('Software_Version','Software Version')}}
         {{Form::text('Software Version','',['class'=>'form-control','placeholder'=>'Enter Version'])}}
     </div>
@@ -27,8 +36,8 @@
                 {{Form::text('Software Cost','0',['class'=>'form-control','placeholder'=>'Enter Cost'])}}
              </div>
              <div class="form-group" id="text2" style="display: none">
-                {{Form::label('Department_Paying','Funded by?')}}
-                 {{Form::text('Department Paying','N/A',['class'=>'form-control','placeholder'=>'Enter who the payment will be approved by'])}}
+                {{Form::label('Department_Paying','Job Code')}}
+                 {{Form::text('Department Paying','N/A',['class'=>'form-control','placeholder'=>'Enter the Job Code'])}}
               </div>
              <div class="form-group">
                 {{Form::label('Module_Code','Module Code')}}

@@ -70,6 +70,7 @@ class RequestsController extends Controller
             'Software_Name'=> 'required',
             'Software_Version'=>'required',
             'Software_Link'=>'required',
+            'OS' =>'required',
             'cost' => 'required',
             'Software_Cost' => 'required|numeric',
             'Software_Reason'=> 'required',
@@ -82,6 +83,7 @@ class RequestsController extends Controller
         $requests->Username = auth()->user()->name;
         $requests->Software_Name = $request->input('Software_Name');
         $requests->Software_Reason = $request->input('Software_Reason');
+        $requests->OS = $request->input('OS');
         $requests->Software_Version = $request->input('Software_Version');
         $requests->Software_Link = $request->input('Software_Link');
         $requests['category'] = $request->input('cost');
@@ -143,6 +145,12 @@ class RequestsController extends Controller
         $software = Requests::find($id);
         $software->Software_Name = $request->input('Software_Name');
         $software->Software_Reason = $request->input('Software_Reason');
+        $software->OS = $request->input('OS');
+        $software->Software_Version = $request->input('Software_Version');
+        $software->Software_Link = $request->input('Software_Link');
+        $software->Software_Cost = $request->input('Software_Cost');
+        $software->Department_Paying = $request->input('Department_Paying');
+        $software->Module_Code = $request->input('Module_Code');
         $software['category'] = $request->input('cost');
         $software->save();
         //return 123;

@@ -20,6 +20,24 @@ class AdminCOntroller extends Controller
             
 
     }
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function RejectedPage(){
+        $rejected_software= Requests::where('Request_Stage','Rejected')->get();
+        return view('Admin_Pages.Rejected_Requests')->with('rejected_software',$rejected_software);
+    }
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AcceptedPage(){
+        $Accepted_software= Requests::where('Request_Stage','Accepted')->get();
+        return view('Admin_Pages.Accepted_Requests')->with('Accepted_software',$Accepted_software);
+    }
 
     /**
      * Show the form for creating a new resource.

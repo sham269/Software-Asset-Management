@@ -21,11 +21,13 @@ class Requests extends Model
     public function setCategoryAttribute($value)
     {
         $this->attributes['cost'] = json_encode($value);
+       
     }
 
     public function getCategoryAttribute($value)
     {
-        return $this->attributes['cost'] = json_decode($value);
+        return $this->attributes['cost']= json_decode($value);
+        //return $this->attributes['OS'] = json_decode($value);
     }
     public function user(){
         return $this->belongsTo('App\User');

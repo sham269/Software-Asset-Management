@@ -37,7 +37,7 @@
             <h5 class="card-title">{{$rejected_software->count()}}</h5>
             <p class="card-text">Rejected Requests</p>
             <div class="card-footer bg-transparent border-danger">
-              <a href="#" class="btn btn-danger">View all</a>
+              <a href="Admin/RejectedRequest" class="btn btn-danger">View all</a>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
             <h5 class="card-title">{{$accepted_software->count()}}</h5>
             <p class="card-text">Accepted Requests</p>
             <div class="card-footer bg-transparent border-success">
-              <a href="#" class="btn btn-success">View all</a>
+              <a href="Admin/AcceptedRequest" class="btn btn-success">View all</a>
             </div>
           </div>
         </div>

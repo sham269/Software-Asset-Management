@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('Username');
             $table->string('Software_Name');
             $table->string('Software_Version');
+            $table->string('OS');
             $table->string('Software_Link');
             $table->string('cost');
             $table->decimal('Software_Cost', 8, 2)->default('0');

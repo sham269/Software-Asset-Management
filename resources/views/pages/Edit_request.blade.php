@@ -15,7 +15,16 @@
         <div class="form-group">
             {{Form::label('Software_Version','Software Version')}}
             {{Form::text('Software Version',$software->Software_Version,['class'=>'form-control','placeholder'=>'Enter Version'])}}
-            
+        </div>
+        <div class="form-group">
+            <label>Choose a OS:</label>
+        <select class="form-control" name="OS" required="required">
+    
+            <option value="windows" {{$software->OS == "windows" ? 'selected':" "}}>Windows</option>
+            <option value="mac" {{$software->OS == "mac" ? 'selected':" "}}>Mac</option>
+            <option value="linux" {{$software->OS == "linux" ? 'selected':" "}}>Linux</option>
+        </select>
+        </div>
             <label><strong>Software Cost :</strong></label><br>
            
             @php 
@@ -26,6 +35,10 @@
             <div class="form-group" id="text" style="display: none">
                 {{Form::label('Software_Cost','Software Cost')}}
                  {{Form::text('Software Cost',$software->Software_Cost,['class'=>'form-control','placeholder'=>'Enter Cost'])}}
+              </div>
+              <div class="form-group" id="text2" style="display: none">
+                {{Form::label('Department_Paying','Job Code')}}
+                 {{Form::text('Department Paying',$software->Department_Paying,['class'=>'form-control','placeholder'=>'Enter the Job Code'])}}
               </div>
         <div class="form-group">
             {{-- @if ({{$software->cost}})
@@ -38,6 +51,7 @@
            
             if(document.getElementById('paid').checked) {
                 document.getElementById("text").style.display = "block";
+                document.getElementById("text2").style.display = "block";
       
 
            
@@ -45,6 +59,7 @@
          }
          else if(document.getElementById('free').checked) {
             document.getElementById("text").style.display = "none";
+            document.getElementById("text2").style.display = "none";
            
         
          }
@@ -52,6 +67,10 @@
          </script>
           
         </div>  
+        <div class="form-group">
+            {{Form::label('Module_Code','Module Code')}}
+            {{Form::text('Module Code',$software->Module_Code,['class'=>'form-control','placeholder'=>'Enter Module Code'])}}
+        </div>
         <div class="form-group">
             {{Form::label('Software_Reason','Software_Reason')}}
             {{Form::textarea('Software_Reason',$software->Software_Reason,['class'=>'form-control','placeholder'=>'Enter Software Reason'])}}

@@ -31,7 +31,9 @@ Route::middleware(['auth','is_admin'])->group(function(){
     Route::get('/edit_php/{id}','App\Http\Controllers\RequestsController@update');
     Route::get('Admin/AllRequest','App\Http\Controllers\AdminCOntroller@index');
     Route::get('Admin/RejectedRequest','App\Http\Controllers\AdminCOntroller@RejectedPage');
+    Route::get('Admin/InProgressRequest','App\Http\Controllers\AdminCOntroller@InProgressPage');
     Route::get('Admin/AcceptedRequest','App\Http\Controllers\AdminCOntroller@AcceptedPage');
+    Route::get('Admin/SubmittedRequest','App\Http\Controllers\AdminCOntroller@SubmittedPage');
     Route::resource('/Admin', 'App\Http\Controllers\AdminCOntroller');
 });
 

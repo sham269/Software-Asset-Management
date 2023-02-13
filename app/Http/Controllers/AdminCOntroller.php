@@ -17,28 +17,30 @@ class AdminCOntroller extends Controller
     {
         $softwares = Requests::all();
         return view('Admin_Pages.All_Requests')->with('softwares',$softwares);
-            
+        $rejected_software= Requests::where('Request_Stage','Rejected')->get();
+        return view('Admin_Pages.Rejected_Requests')->with('rejected_software',$rejected_software);
 
     }
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function RejectedPage(){
         $rejected_software= Requests::where('Request_Stage','Rejected')->get();
         return view('Admin_Pages.Rejected_Requests')->with('rejected_software',$rejected_software);
     }
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function AcceptedPage(){
         $Accepted_software= Requests::where('Request_Stage','Accepted')->get();
         return view('Admin_Pages.Accepted_Requests')->with('Accepted_software',$Accepted_software);
     }
 
+    
+    public function SubmittedPage(){
+        $Submitted_software= Requests::where('Request_Stage','Submitted')->get();
+        return view('Admin_Pages.Submitted')->with('Submitted_software',$Submitted_software);
+    }
+    public function InProgressPage(){
+        $InProgress_software= Requests::where('Request_Stage','In Progress')->get();
+        return view('Admin_Pages.InProgress')->with('In_Progress_software',$InProgress_software);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -103,7 +105,7 @@ class AdminCOntroller extends Controller
                 
                 $software->Request_Stage='In Progress';
                 $software->save();
-                return redirect('/Admin/AllRequest')->with('success', 'Request Updated');
+                return redirect('/Admin')->with('success', 'Request Rejected');
             }
             if(isset($sub["Reject"])){
                 $software = Requests::find($id);
@@ -112,7 +114,17 @@ class AdminCOntroller extends Controller
                 
                 $software->Request_Stage='Rejected';
                 $software->save();
-                return redirect('/Admin/AllRequest')->with('success', 'Request Updated');
+                return redirect('/Admin')->with('success', 'Request Rejected');
+            
+            }
+            if(isset($sub["Accept"])){
+                $software = Requests::find($id);
+                // $software->Request_Stage= $request->input('In Progress');
+                // $software->save();
+                
+                $software->Request_Stage='Accepted';
+                $software->save();
+                return redirect('/Admin')->with('success', 'Request Accepted');
             
             }
         }

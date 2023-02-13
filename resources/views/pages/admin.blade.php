@@ -25,7 +25,7 @@
             <h5 class="card-title">{{$submitted_software->count()}}</h5>
             <p class="card-text">Requests made</p>
             <div class="card-footer bg-transparent bg-info">
-              <a href="#" class="btn btn-info">View all</a>
+              <a href="Admin/SubmittedRequest" class="btn btn-info">View all</a>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
             <h5 class="card-title">{{$in_Progress->count()}}</h5>
             <p class="card-text">Requests in Progress </p>
             <div class="card-footer bg-transparent border-warning">
-              <a href="#" class="btn btn-warning">View all</a>
+              <a href="Admin/InProgressRequest" class="btn btn-warning">View all</a>
             </div>
           </div>
         </div>

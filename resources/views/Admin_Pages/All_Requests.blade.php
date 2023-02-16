@@ -19,7 +19,9 @@
           <button type="button" class="assign-modal btn btn-sm btn-primary" data-toggle="modal" data-target="#assignModal{{ $software->id }}" data-id="{{ $software->id }}">Read More</button>
           {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Read More</button> --}}
          
-          <p class="text-footer text-muted">Request Stage: {{$software->Request_Stage}}</p>
+          <p class="text-footer text-muted"> Request Stage: {{$software->Request_Stage}}<br>
+            Request Made: {{$software->created_at}} || Updated at {{$software->updated_at}}
+            </p>
         </div>
   
     
@@ -31,16 +33,64 @@
         @php 
                 $cost=json_decode($software->cost)[0]
         @endphp
-        <h1 class="text-center"> More information </h1>
-        <p >Software Version: {{$software->Software_Version}} <br>
-        Software OS: {{$software->OS}}<br>
-        Software Link: {{$software->Software_Link}} <br>
-        Free or Paid?: {{$cost}} <br>
-        Software Cost (0 if free): £{{$software->Software_Cost}}<br>
-        Job Code (N/A if free): {{$software->Department_Paying}}<br>
-        Module Code: {{$software-> Module_Code}}
-
-        </p>
+          <h1 class="text-center text-info"> More information </h1>
+          <table>
+           <thead>
+             <table class="table text-center">
+               <thead>
+                 <tr> 
+                   <th scope="col">Field</th>
+                   <th scope="col">Response</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <th scope="row">Request Id</th>
+                   <td>{{$rejected->id}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Request Made By</th>
+                   <td>{{$rejected->Username}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Software Name</th>
+                   <td>{{$rejected->Software_Name}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Software Version</th>
+                   <td>{{$rejected->Software_Version}}</td>
+                   
+                 </tr>
+                 <tr>
+                   <th scope="row">OS</th>
+                   <td>{{$rejected->OS}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Software Cost</th>
+                   <td>{{$cost}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Software Cost (0 if free)</th>
+                   <td>{{$rejected->Software_Cost}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Software Cost (0 if free)</th>
+                   <td>{{$rejected->Software_Cost}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Job Code (N/A if free)</th>
+                   <td>{{$rejected->Department_Paying}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Module Code</th>
+                   <td>{{$rejected->Module_Code}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">Software Reason</th>
+                   <td>{{$rejected->Software_Reason}}</td>
+                 </tr>
+               </tbody>
+             </table>
         
 
       </div>

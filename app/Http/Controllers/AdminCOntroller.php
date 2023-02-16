@@ -31,8 +31,6 @@ class AdminCOntroller extends Controller
         $Accepted_software= Requests::where('Request_Stage','Accepted')->get();
         return view('Admin_Pages.Accepted_Requests')->with('Accepted_software',$Accepted_software);
     }
-
-    
     public function SubmittedPage(){
         $Submitted_software= Requests::where('Request_Stage','Submitted')->get();
         return view('Admin_Pages.Submitted')->with('Submitted_software',$Submitted_software);
@@ -105,7 +103,7 @@ class AdminCOntroller extends Controller
                 
                 $software->Request_Stage='In Progress';
                 $software->save();
-                return redirect('/Admin')->with('success', 'Request Rejected');
+                return redirect('/admin')->with('success', 'Request Rejected');
             }
             if(isset($sub["Reject"])){
                 $software = Requests::find($id);
@@ -114,7 +112,7 @@ class AdminCOntroller extends Controller
                 
                 $software->Request_Stage='Rejected';
                 $software->save();
-                return redirect('/Admin')->with('success', 'Request Rejected');
+                return redirect('/admin')->with('success', 'Request Rejected');
             
             }
             if(isset($sub["Accept"])){
@@ -124,7 +122,7 @@ class AdminCOntroller extends Controller
                 
                 $software->Request_Stage='Accepted';
                 $software->save();
-                return redirect('/Admin')->with('success', 'Request Accepted');
+                return redirect('/admin')->with('success', 'Request Accepted');
             
             }
         }

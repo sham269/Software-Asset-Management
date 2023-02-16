@@ -26,18 +26,26 @@ class RequestsController extends Controller
  
         $rejected_software= Requests::where('Username',$userId)
                             ->where('Request_Stage','Rejected') ->get();
+        
+        $Accepted_software= Requests::where('Username',$userId)
+                            ->where('Request_Stage','Accepted') ->get();
+       $In_Progress= Requests::where('Username',$userId)
+                            ->where('Request_Stage','In Progress') ->get();
         // return view ('pages.my_requests')->with('rejected_software',$rejected_software);
-        return view ('pages.my_requests')->with('softwares',$softwares)->with('rejected_software',$rejected_software);
+        return view ('pages.my_requests')->with('softwares',$softwares)->with('rejected_software',$rejected_software)
+        ->with('Accepted_software',$Accepted_software)->with('In_Progress',$In_Progress);
         }
         else if(Auth::user()->is_admin==1){
         
             $rejected_software= Requests::where('Request_Stage','Rejected')->get();
             $submitted_software = Requests::where('Request_Stage','Submitted')->get();
             $in_Progress = Requests::where('Request_Stage','In Progress')->get();
-            $accepted_software = Requests::where('Request_Stage','Accepted');
+            $accepted_software = Requests::where('Request_Stage','Accepted')->get();
+            
             $softwares = Requests::all();
             return view('pages.admin')->with('softwares',$softwares)->with('rejected_software',$rejected_software)
             ->with('in_Progress',$in_Progress)->with('submitted_software',$submitted_software)->with('accepted_software',$accepted_software);
+            
         }
         
 

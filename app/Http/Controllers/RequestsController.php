@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Requests;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -18,7 +19,7 @@ class RequestsController extends Controller
         //
         #$softwares = Requests::all();
         #return view('pages.my_requests')->with('softwares',$softwares);
-        if(Auth::user()&& Auth::user()->is_admin==0){
+        if(Auth::user()&& Auth::user()->is_admin==0 && Auth::user()->role=="Academic"){
         $userId = Auth::user()->name;
         $softwares= Requests::where('Username',$userId)
                             ->where('Request_Stage','Submitted') ->get();
@@ -46,6 +47,11 @@ class RequestsController extends Controller
             return view('pages.admin')->with('softwares',$softwares)->with('rejected_software',$rejected_software)
             ->with('in_Progress',$in_Progress)->with('submitted_software',$submitted_software)->with('accepted_software',$accepted_software);
             
+        }
+        else if(Auth::user()->role=="System Admin"){
+            $usercount = User::where('verified','0');
+            return view('pages.admin')->with('usercount',$usercount);
+    
         }
         
 

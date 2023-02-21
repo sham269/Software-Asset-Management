@@ -16,6 +16,10 @@ class PagesController extends Controller
         $PageTitle = 'About';
         return view ('pages.about')->with('PageTitle',$PageTitle);
     }
+    public function Not_Verified(){
+        $PageTitle = 'Wrong';
+        return view ('pages.not_verified')->with('PageTitle',$PageTitle);
+    }
     public function services(){
         $data = array(
             'PageTitle'=>'Software Listed',

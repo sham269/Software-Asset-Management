@@ -4,7 +4,7 @@
     
  
     <h1>Admin Panel</h1>
- 
+    @if(Auth::user()->role=="Admin")
     <div class="row row-cols-1 row-cols-md-4">
       <div class="col mb-3">
         <div class="card bg-light mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 18rem;">
@@ -54,6 +54,7 @@
           </div>
         </div>
       </div>
+   
       <div class="col mb-3">
         <div class="card card bg-light mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 18rem;">
           <div class="card-header bg-success text-white ">Accepted Requests</div>
@@ -66,7 +67,48 @@
           </div>
         </div>
       </div>
+      <div class="col mb-3">
+        <div class="card card bg-light mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 18rem;">
+          <div class="card-header bg-dark text-white ">Users</div>
+          <div class="card-body">
+            <h5 class="card-title">{{Auth::user()->count()}}</h5>
+            <p class="card-text">Users Registered</p>
+            <div class="card-footer bg-transparent border-success">
+              <a href="Admin/User" class="btn btn-dark">View all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endif
+      @if(Auth::user()->role=="System Admin")
+      <div class="row row-cols-1 row-cols-md-4">
+      <div class="col mb-3">
+        <div class="card card bg-light mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 18rem;">
+          <div class="card-header bg-dark text-white ">Users</div>
+          <div class="card-body">
+            <h5 class="card-title">{{Auth::user()->count()}}</h5>
+            <p class="card-text">Users Registered</p>
+            <div class="card-footer bg-transparent border-success">
+              <a href="Admin/User" class="btn btn-dark">View all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="card card bg-light mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 18rem;">
+          <div class="card-header bg-danger text-white ">Users</div>
+          <div class="card-body">
+            <h5 class="card-title">{{$usercount->count()}}</h5>
+            <p class="card-text">Need to be Accepted</p>
+            <div class="card-footer bg-danger border-success">
+              <a href="Admin/User" class="btn btn-dark">View all</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    @endif
+    
       
     {{-- <a href="/posts/create" class="btn btn-info" role="button">Add a Software</a> --}}
 </div>

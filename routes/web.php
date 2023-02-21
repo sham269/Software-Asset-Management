@@ -23,20 +23,26 @@ Route::get('/', 'App\Http\Controllers\PagesController@index');
 //     return view('pages.about');
 // });
 
+
 Route::middleware(['auth','is_admin'])->group(function(){
     #Route::get('/admin','App\Http\Controllers\PagesController@admin');
     Route::get('/admin','App\Http\Controllers\RequestsController@index');
     Route::get('/available','App\Http\Controllers\PagesController@available');
     Route::get('posts/create','App\Http\Controllers\PostsController@create');
-    Route::get('/edit_php/{id}','App\Http\Controllers\RequestsController@update');
+    Route::put('update/{id}','App\Http\Controllers\AdminCOntroller@UserUpdate')->name('user.update');
+     Route::get('Admin/Delete/{id}','App\Http\Controllers\AdminCOntroller@Destroy');
     Route::get('Admin/AllRequest','App\Http\Controllers\AdminCOntroller@index');
     Route::get('Admin/RejectedRequest','App\Http\Controllers\AdminCOntroller@RejectedPage');
     Route::get('Admin/InProgressRequest','App\Http\Controllers\AdminCOntroller@InProgressPage');
     Route::get('Admin/AcceptedRequest','App\Http\Controllers\AdminCOntroller@AcceptedPage');
     Route::get('Admin/SubmittedRequest','App\Http\Controllers\AdminCOntroller@SubmittedPage');
+    Route::get('Admin/User','App\Http\Controllers\AdminCOntroller@UserPage');
     Route::resource('/Admin', 'App\Http\Controllers\AdminCOntroller');
 });
-
+Route::middleware(['auth','is_systemadmin'])->group(function(){
+    Route::get('Admin/User','App\Http\Controllers\AdminCOntroller@UserPage');
+    Route::get('/admin','App\Http\Controllers\RequestsController@index');
+});
 Route::middleware(['auth','is_loggedin'])->group(function(){
     Route::get('/about','App\Http\Controllers\PagesController@about');
     Route::get('/my_requests','App\Http\Controllers\RequestsController@index');
@@ -65,13 +71,16 @@ Route::middleware(['auth','is_loggedin'])->group(function(){
 //     return 'This is user ' .$name.' with an id of '.$id;
 // });
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth','is_verified'])->group(function(){
+    Route::get('/not_verified','App\Http\Controllers\PagesController@Not_Verified')->name('not_verified');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

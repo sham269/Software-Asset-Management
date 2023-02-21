@@ -52,9 +52,11 @@
                           <li class="nav-item">
                             <a class="nav-link" href="/posts">Software Available</a>
                           </li>
+                          @if(Auth::user() && Auth::user()->role=="Academic")
                           <li class="nav-item">
                             <a class="nav-link" href="/request">Software Request</a>
                           </li>
+                          @endif
                           <li class="nav-item">
                             <a class="nav-link" href="/room">Room Software</a>
                           </li>
@@ -84,12 +86,12 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->name}} ({{Auth::user()->role}})
 
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                @if(Auth::user()->is_admin==1)
+                             @if(Auth::user()->is_admin==1 || Auth::user()->role=="System Admin")
 
 
                                     <a class="dropdown-item" href="/admin">Admin Console</a>
@@ -97,7 +99,7 @@
 
 
                             @endif
-                            @if(Auth::user()&& Auth::user()->is_admin==0)
+                            @if(Auth::user() && Auth::user()->role=="Academic")
 
 
                                     <a class="dropdown-item" href="/my_requests">My Requests</a>

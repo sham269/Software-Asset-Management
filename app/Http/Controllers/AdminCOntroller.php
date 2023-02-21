@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Requests;
+use App\Models\User;
 use Auth;
 
 class AdminCOntroller extends Controller
@@ -38,6 +39,10 @@ class AdminCOntroller extends Controller
     public function InProgressPage(){
         $InProgress_software= Requests::where('Request_Stage','In Progress')->get();
         return view('Admin_Pages.InProgress')->with('In_Progress_software',$InProgress_software);
+    }
+    public function UserPage(){
+        $Users = User::all()->except(Auth::id());
+        return view('Admin_Pages.User')->with('Users',$Users);
     }
     /**
      * Show the form for creating a new resource.
@@ -82,6 +87,31 @@ class AdminCOntroller extends Controller
         //
         
     }
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function UserUpdate(Request $request,$id){
+        $this->validate($request,[
+            'name'=> 'required',
+            'email'=> 'required',
+            'is_admin'=>'required',
+            'role'=>'required'
+        ]);
+        $user = User::find($id);
+        $user->name= $request->input('name');
+        $user->email = $request->input('email');
+        $user->is_admin = $request->input('is_admin');
+        $user->role = $request->input('role');
+        $user->save();
+        //return 123;
+
+        return redirect('/admin')->with('success', 'User Updated');
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -128,7 +158,7 @@ class AdminCOntroller extends Controller
         }
         
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -138,5 +168,8 @@ class AdminCOntroller extends Controller
     public function destroy($id)
     {
         //
+        $user = User::find($id);
+        $user-> delete();
+        return redirect('/Admin/User')->with('success', 'Request Deleted');
     }
 }

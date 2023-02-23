@@ -353,7 +353,9 @@
               
               <h5 class="card-title">Software Version: {{$software->Software_Version}}</h5>
               <h6 class="card-subtitle mb-2 text-muted">{{$software->Request_Stage}}</h6>
-              <p class="card-text">{{$software->Software_Reason}}</p>
+              <p class="card-text">{{$software->Software_Reason}} <br>
+              DS_Notes: {{$software->DS_Notes}}
+              </p>
              
               <div class="container">
                 {!! Form::open(['action' => ['App\Http\Controllers\RequestsController@destroy',$software->id],'method'=>'DELETE','class'=>'float-mid']) !!}

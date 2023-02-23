@@ -101,7 +101,7 @@
             <h5 class="card-title">{{$usercount->count()}}</h5>
             <p class="card-text">Need to be Accepted</p>
             <div class="card-footer bg-danger border-success">
-              <a href="Admin/User" class="btn btn-dark">View all</a>
+              <a href="Verified" class="btn btn-dark">View all</a>
             </div>
           </div>
         </div>

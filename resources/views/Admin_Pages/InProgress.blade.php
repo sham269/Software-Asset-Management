@@ -15,17 +15,36 @@
           <p class="text-footer text-muted"> Request Stage: {{$InProgress->Request_Stage}}<br>
           Request Made: {{$InProgress->created_at}} || Updated at {{$InProgress->updated_at}}
           </p>
-
+          
           {!! Form::open(['action' => ['App\Http\Controllers\AdminCOntroller@update',$InProgress->id],'method'=>'PUT']) !!}
-        
+          
           {!! Form::submit('Accept', ['class'=>'btn btn-success','name'=>'submit[Accept]','value'=>'Accept'])!!}
-          {!! Form::submit('Reject', ['class'=>'btn btn-danger','name'=>'submit[Reject]','value'=>'Reject'])!!}
+          {{-- {!! Form::submit('Reject', ['class'=>'btn btn-danger','name'=>'submit[Reject]','value'=>'Reject'])!!} 
+          --}}
+          <button type="button" class="assign-modal btn btn-danger" data-toggle="modal" data-target="#RejectModal{{ $InProgress->id }}" data-id="{{ $InProgress->id }}">Reject</button>
           
     
           {!! Form::close() !!}
         
           <button type="button" class="assign-modal btn btn-sm btn-primary float-end" data-toggle="modal" data-target="#assignModal{{ $InProgress->id }}" data-id="{{ $InProgress->id }}">Read More</button>
           
+        </div>
+        <div class="modal fade bd-example-modal-lg " id="RejectModal{{ $InProgress->id }}" tabindex="-1" role="dialog" aria-labelledby="assignModalLabel{{ $InProgress->id }}" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            
+            <div class="modal-content">
+              <h1 class="text-center">Reason for Rejecting</h1>
+              <div class="container">
+              {!! Form::open(['action' => ['App\Http\Controllers\AdminCOntroller@update',$InProgress->id],'method'=>'PUT']) !!}
+              <div class="form-group">
+                {{Form::label('DS_Notes','Reason for Rejection')}}
+                {{Form::textarea('DS Notes','',['class'=>'form-control','placeholder'=>'Enter Reason why'])}}
+            </div>
+            {!! Form::submit('Reject', ['class'=>'btn btn-danger mt-2 mb-2','name'=>'submit[Reject]','value'=>'Reject'])!!}
+              {!! Form::close() !!}
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal fade bd-example-modal-lg " id="assignModal{{ $InProgress->id }}" tabindex="-1" role="dialog" aria-labelledby="assignModalLabel{{ $InProgress->id }}" aria-hidden="true">
           <div class="modal-dialog modal-lg">

@@ -11,8 +11,9 @@
         </div>
         <div id="card-body" class="card-body">
           <h5 class="card-title">Software Name: {{$rejected->Software_Name}}</h5>
-          <p class="card-text">Software Reason: {{$rejected->Software_Reason}} <br> Hello</p>
+          <p class="card-text">Software Reason: {{$rejected->Software_Reason}}</p>
           <p class="text-footer text-muted"> Request Stage: {{$rejected->Request_Stage}}<br>
+            Reason Rejected: {{$rejected->DS_Notes}} <br>
             Request Made: {{$rejected->created_at}} || Updated at {{$rejected->updated_at}}
             </p>
           {!! Form::open(['action' => ['App\Http\Controllers\AdminCOntroller@update',$rejected->id],'method'=>'PUT']) !!}

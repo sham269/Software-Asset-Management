@@ -42,6 +42,8 @@ Route::middleware(['auth','is_admin'])->group(function(){
 Route::middleware(['auth','is_systemadmin'])->group(function(){
     Route::get('Admin/User','App\Http\Controllers\AdminCOntroller@UserPage');
     Route::get('/admin','App\Http\Controllers\RequestsController@index');
+    Route::get('/Verified','App\Http\Controllers\AdminCOntroller@VerifyPage');
+   
 });
 Route::middleware(['auth','is_loggedin'])->group(function(){
     Route::get('/about','App\Http\Controllers\PagesController@about');
@@ -74,6 +76,7 @@ Route::middleware(['auth','is_loggedin'])->group(function(){
 Route::middleware(['auth','is_verified'])->group(function(){
     Route::get('/not_verified','App\Http\Controllers\PagesController@Not_Verified')->name('not_verified');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::put('verify/{id}','App\Http\Controllers\AdminCOntroller@verify');
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

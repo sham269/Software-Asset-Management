@@ -46,24 +46,24 @@
                <tbody>
                  <tr>
                    <th scope="row">Request Id</th>
-                   <td>{{$rejected->id}}</td>
+                   <td>{{$software->id}}</td>
                  </tr>
                  <tr>
                    <th scope="row">Request Made By</th>
-                   <td>{{$rejected->Username}}</td>
+                   <td>{{$software->Username}}</td>
                  </tr>
                  <tr>
                    <th scope="row">Software Name</th>
-                   <td>{{$rejected->Software_Name}}</td>
+                   <td>{{$software->Software_Name}}</td>
                  </tr>
                  <tr>
                    <th scope="row">Software Version</th>
-                   <td>{{$rejected->Software_Version}}</td>
+                   <td>{{$software->Software_Version}}</td>
                    
                  </tr>
                  <tr>
                    <th scope="row">OS</th>
-                   <td>{{$rejected->OS}}</td>
+                   <td>{{$software->OS}}</td>
                  </tr>
                  <tr>
                    <th scope="row">Software Cost</th>
@@ -71,23 +71,23 @@
                  </tr>
                  <tr>
                    <th scope="row">Software Cost (0 if free)</th>
-                   <td>{{$rejected->Software_Cost}}</td>
+                   <td>{{$software->Software_Cost}}</td>
                  </tr>
                  <tr>
                    <th scope="row">Software Cost (0 if free)</th>
-                   <td>{{$rejected->Software_Cost}}</td>
+                   <td>{{$software->Software_Cost}}</td>
                  </tr>
                  <tr>
                    <th scope="row">Job Code (N/A if free)</th>
-                   <td>{{$rejected->Department_Paying}}</td>
+                   <td>{{$software->Department_Paying}}</td>
                  </tr>
                  <tr>
                    <th scope="row">Module Code</th>
-                   <td>{{$rejected->Module_Code}}</td>
+                   <td>{{$software->Module_Code}}</td>
                  </tr>
                  <tr>
                    <th scope="row">Software Reason</th>
-                   <td>{{$rejected->Software_Reason}}</td>
+                   <td>{{$software->Software_Reason}}</td>
                  </tr>
                </tbody>
              </table>

@@ -22,6 +22,11 @@ class Verified_User
             Session::flash('message', 'Account not Verified - Please wait 3-4 days');
             return redirect('/login')->withWarning( 'Account not Verified' );
         }
+        else if(Auth::user()->verified==2){
+            \Auth::logout();
+            Session::flash('danger', 'Account verification denied - Account has permenantly been shut');
+            return redirect('/login')->withWarning( 'Account verification denied - Account has permenantly been shut' );
+        }
         return $next($request);
     }
 }

@@ -19,7 +19,7 @@
             </p>
           
           {!! Form::open(['action' => ['App\Http\Controllers\AdminCOntroller@update',$Accepted->id],'method'=>'PUT']) !!}
-          {!! Form::submit('Reject', ['class'=>'btn btn-danger','name'=>'submit[Reject]','value'=>'Reject'])!!}
+          <button type="button" class="assign-modal btn btn-danger" data-toggle="modal" data-target="#RejectModal{{ $Accepted->id }}" data-id="{{ $Accepted->id }}">Reject</button>
           {!! Form::submit('In Progress', ['class'=>'btn btn-warning','name'=>'submit[Inprogress]','value'=>'Inprogress'])!!}
           
           
@@ -27,12 +27,29 @@
           {!! Form::close() !!}
           <button type="button" class="assign-modal btn btn-sm btn-primary float-end" data-toggle="modal" data-target="#assignModal{{ $Accepted->id }}" data-id="{{ $Accepted->id }}">Read More</button>
         </div>
+        <div class="modal fade bd-example-modal-lg " id="RejectModal{{ $Accepted->id }}" tabindex="-1" role="dialog" aria-labelledby="assignModalLabel{{ $Accepted->id }}" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            
+            <div class="modal-content">
+              <h1 class="text-center">Reason for Rejecting</h1>
+              <div class="container">
+              {!! Form::open(['action' => ['App\Http\Controllers\AdminCOntroller@update',$Accepted->id],'method'=>'PUT']) !!}
+              <div class="form-group">
+                {{Form::label('DS_Notes','Reason for Rejection')}}
+                {{Form::textarea('DS Notes','',['class'=>'form-control','placeholder'=>'Enter Reason why'])}}
+            </div>
+            {!! Form::submit('Reject', ['class'=>'btn btn-danger mt-2 mb-2','name'=>'submit[Reject]','value'=>'Reject'])!!}
+              {!! Form::close() !!}
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="modal fade bd-example-modal-lg " id="assignModal{{ $Accepted->id }}" tabindex="-1" role="dialog" aria-labelledby="assignModalLabel{{ $Accepted->id }}" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             
             <div class="modal-content">
               @php 
-                      $cost=json_decode($Accepted>cost)[0]
+                      $cost=json_decode($Accepted->cost)[0]
               @endphp
               <h1 class="text-center text-info"> More information </h1>
                <table>
@@ -55,7 +72,7 @@
                       </tr>
                       <tr>
                         <th scope="row">Software Name</th>
-                        <td>{{$Accepted>Software_Name}}</td>
+                        <td>{{$Accepted->Software_Name}}</td>
                       </tr>
                       <tr>
                         <th scope="row">Software Version</th>
@@ -80,7 +97,7 @@
                       </tr>
                       <tr>
                         <th scope="row">Job Code (N/A if free)</th>
-                        <td>{{$Accepted>Department_Paying}}</td>
+                        <td>{{$Accepted->Department_Paying}}</td>
                       </tr>
                       <tr>
                         <th scope="row">Module Code</th>

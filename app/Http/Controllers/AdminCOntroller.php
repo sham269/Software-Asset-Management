@@ -40,6 +40,10 @@ class AdminCOntroller extends Controller
         $InProgress_software= Requests::where('Request_Stage','In Progress')->get();
         return view('Admin_Pages.InProgress')->with('In_Progress_software',$InProgress_software);
     }
+    public function VerifyPage(){
+        $verified= User::where('verified',0)->get();
+        return view('Admin_Pages.verificiation')->with('verified',$verified);
+    }
     public function UserPage(){
         $Users = User::all()->except(Auth::id());
         return view('Admin_Pages.User')->with('Users',$Users);
@@ -111,7 +115,39 @@ class AdminCOntroller extends Controller
 
         return redirect('/admin')->with('success', 'User Updated');
     }
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function verify(Request $request, $id)
+    {
+         //
+         if(isset($_POST["submit"])){
+            $sub=$_POST["submit"];
 
+            if(isset($sub["Accept"])){
+                 $software = User::find($id);
+                // $software->Request_Stage= $request->input('In Progress');
+                // $software->save();
+                
+                $software->verified='1';
+                $software->save();
+                return redirect('/admin')->with('success', 'User Accepted');
+            }
+            if(isset($sub["Deny"])){
+                $software = User::find($id);
+                // $software->Request_Stage= $request->input('In Progress');
+                // $software->save();
+                $software->verified='2';
+                $software->save();
+                return redirect('/admin')->with('success', 'User Rejected');
+            
+            }
+    }
+}
 
     /**
      * Update the specified resource in storage.
@@ -139,7 +175,7 @@ class AdminCOntroller extends Controller
                 $software = Requests::find($id);
                 // $software->Request_Stage= $request->input('In Progress');
                 // $software->save();
-                
+                $software->DS_Notes = $request->input('DS_Notes');
                 $software->Request_Stage='Rejected';
                 $software->save();
                 return redirect('/admin')->with('success', 'Request Rejected');

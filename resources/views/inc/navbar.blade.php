@@ -1,39 +1,9 @@
-{{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-        <a class="navbar-brand" href="">SAM</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <ul class="navbar-nav mr-auto">
-            <li>
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/services">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/posts">Software Available</a>
-              </li>
-          </ul>
-          <ul class="navbar-nav ms-auto">
-            <li>
-                <a class="nav-link" href="/posts/create">Create Post</a>
-              </li>
-            </ul>
-       </div>
-      </div>
-      </nav> --}}
-
-
-      <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+      <nav class="navbar navbar-dark navbar-expand-md shadow-sm text-white">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                {{-- {{ config('app.name', 'Laravel') }} --}}
+                <img src="build/assets/logo.jpg" class="img-fluid" width="100px" height="100px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -103,7 +73,7 @@
 
 
                                     <a class="dropdown-item" href="/my_requests">My Requests</a>
-                    
+                                    <a class="dropdown-item" href="/my_profile">My Profile</a>
                                       <a class="dropdown-item" href="/about">About</a>
                           
 

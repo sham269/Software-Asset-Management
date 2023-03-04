@@ -50,8 +50,10 @@ Route::middleware(['auth','is_loggedin'])->group(function(){
     Route::get('/my_requests','App\Http\Controllers\RequestsController@index');
     Route::get('/room','App\Http\Controllers\PagesController@room');
     Route::get('/request','App\Http\Controllers\PagesController@request');
+    Route::put('update/{id}','App\Http\Controllers\RequestsController@UserUpdate')->name('user.update');
     Route::resource('/posts','App\Http\Controllers\PostsController');
     Route::get('/edit_php/{id}','App\Http\Controllers\RequestsController@edit');
+    Route::get('/my_profile','App\Http\Controllers\PagesController@UserPage');
     Route::resource('/requests','App\Http\Controllers\RequestsController');
     Route::get('/tab1',function(){
         Route::get('/my_requests','App\Http\Controllers\RequestsController@index');

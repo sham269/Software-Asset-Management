@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\User;
-use Illuminate\Http\Request;
+use App\Models\User;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
     public function index(){
-        $PageTitle = 'Software Asset Management!';
+        $PageTitle = 'Software Asset Management';
         // return view ('pages.index',compact('PageTitle'));
         return view ('pages.index')->with('PageTitle',$PageTitle);
     }
@@ -43,6 +44,13 @@ class PagesController extends Controller
 
         $PageTitle = 'Rooms with Software';
         return view ('pages.RoomList')->with('PageTitle',$PageTitle);
+    }
+    public function UserPage(){
+        $current_user = Auth::User();
+    
+        
+        // return view ('pages.index',compact('PageTitle'));
+        return view ('pages.user')->with('current_user',$current_user);
     }
     // public function my_requests(){
     //     $PageTitle = 'My requests';

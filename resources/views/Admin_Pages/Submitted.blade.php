@@ -57,12 +57,7 @@
                <table>
                 <thead>
                   <table class="table text-center">
-                    <thead>
-                      <tr> 
-                        <th scope="col">Field</th>
-                        <th scope="col">Response</th>
-                      </tr>
-                    </thead>
+                    
                     <tbody>
                       <tr>
                         <th scope="row">Request Id</th>

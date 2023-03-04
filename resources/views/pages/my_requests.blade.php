@@ -440,12 +440,6 @@
           </div>
           @endforeach
         </div>
-       
-       
-      
-  
-
-    
     @endforeach
     @else
     <h1> No Requests have been Rejected </h1>

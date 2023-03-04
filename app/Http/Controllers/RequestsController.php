@@ -32,6 +32,8 @@ class RequestsController extends Controller
                             ->where('Request_Stage','Accepted') ->get();
        $In_Progress= Requests::where('Username',$userId)
                             ->where('Request_Stage','In Progress') ->get();
+
+        $All_Records = Requests::Find($userId);
         // return view ('pages.my_requests')->with('rejected_software',$rejected_software);
         return view ('pages.my_requests')->with('softwares',$softwares)->with('rejected_software',$rejected_software)
         ->with('Accepted_software',$Accepted_software)->with('In_Progress',$In_Progress);
@@ -184,5 +186,19 @@ class RequestsController extends Controller
         $software = Requests::find($id);
         $software-> delete();
         return redirect('/my_requests')->with('success', 'Request Deleted');
+    }
+    public function UserUpdate(Request $request,$id){
+        $this->validate($request,[
+            'name'=> 'required',
+            'email'=> 'required',
+            
+        ]);
+        $user = User::find($id);
+        $user->name= $request->input('name');
+        $user->email = $request->input('email');
+        $user->save();
+        //return 123;
+
+        return redirect('/my_profile')->with('success', 'User has been Updated');
     }
 }

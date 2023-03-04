@@ -141,6 +141,7 @@ class AdminCOntroller extends Controller
                 $software = User::find($id);
                 // $software->Request_Stage= $request->input('In Progress');
                 // $software->save();
+                $software->notes = $request->input('notes');
                 $software->verified='2';
                 $software->save();
                 return redirect('/admin')->with('success', 'User Rejected');

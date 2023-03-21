@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{-- {{ config('app.name', 'Laravel') }} --}}
-                <img src="build/assets/logo.jpg" class="img-fluid" width="100px" height="100px">
+                <img src="\build/assets/logo.jpg" class="img-fluid" width="100px" height="100px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -20,17 +20,14 @@
                           <a class="nav-link" href="/">Home</a>
                         </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="/posts">Software Available</a>
+                            <a class="nav-link" href="/posts/index">Software Available</a>
                           </li>
                           @if(Auth::user() && Auth::user()->role=="Academic")
                           <li class="nav-item">
                             <a class="nav-link" href="/request">Software Request</a>
                           </li>
                           @endif
-                          <li class="nav-item">
-                            <a class="nav-link" href="/room">Room Software</a>
-                          </li>
-
+                       
                       </ul>
 
 
@@ -74,7 +71,7 @@
 
                                     <a class="dropdown-item" href="/my_requests">My Requests</a>
                                     <a class="dropdown-item" href="/my_profile">My Profile</a>
-                                      <a class="dropdown-item" href="/about">About</a>
+                                      <a class="dropdown-item" href="https://www.aston.ac.uk/ict" target="_blank">Contact Us</a>
                           
 
 

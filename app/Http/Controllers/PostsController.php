@@ -50,7 +50,7 @@ class PostsController extends Controller
     
         $post->save();
         //return 123;
-        return redirect('/posts')->with('success', 'Software Added');
+        return redirect('/Admin/Software')->with('success', 'Software Added');
     }
 
     /**
@@ -90,15 +90,16 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'Software_Name'=> 'required',
-            'Software_Reason'=> 'required'
+            'Software_Information'=> 'required'
         ]);
 
         $post = Post::find($id);
         $post->Software_Name = $request->input('Software_Name');
-        $post->Software_Reason = $request->input('Software_Reason');
+        $post->Software_Information = $request->input('Software_Information');
+        $software['category'] = $request->input('blacklisted');
         $post->save();
         //return 123;
-        return redirect('/posts')->with('success', 'Post Updated');
+        return redirect('/Admin/Software')->with('success', 'Post Updated');
     }
 
     /**
@@ -111,6 +112,6 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post-> delete();
-        return redirect('/posts')->with('success', 'Post Deleted');
+        return redirect('/Admin/Software')->with('success', 'Post Deleted');
     }
 }

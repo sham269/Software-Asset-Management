@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h1>Add Software</h1>
+
     {!! Form::open(['action' => ['App\Http\Controllers\PostsController@update',$post->id],'method'=>'PUT']) !!}
         <div class="form-group">
             {{Form::label('Software_Name','Software Name')}}

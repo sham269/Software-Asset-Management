@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Requests;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -44,10 +45,12 @@ class RequestsController extends Controller
             $submitted_software = Requests::where('Request_Stage','Submitted')->get();
             $in_Progress = Requests::where('Request_Stage','In Progress')->get();
             $accepted_software = Requests::where('Request_Stage','Accepted')->get();
+            $software_directory = Post::all();
             
             $softwares = Requests::all();
             return view('pages.admin')->with('softwares',$softwares)->with('rejected_software',$rejected_software)
-            ->with('in_Progress',$in_Progress)->with('submitted_software',$submitted_software)->with('accepted_software',$accepted_software);
+            ->with('in_Progress',$in_Progress)->with('submitted_software',$submitted_software)->with('accepted_software',$accepted_software)
+            ->with('software_directory',$software_directory);
             
         }
         else if(Auth::user()->role=="System Admin"){

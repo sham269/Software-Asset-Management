@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Requests;
 use App\Models\User;
+use App\Models\Post;
 use Auth;
 
 class AdminCOntroller extends Controller
@@ -47,6 +48,10 @@ class AdminCOntroller extends Controller
     public function UserPage(){
         $Users = User::all()->except(Auth::id());
         return view('Admin_Pages.User')->with('Users',$Users);
+    }
+    public function SoftwarePage(){
+        $software = Post::all();
+        return view('Admin_Pages.software_directory')->with('software',$software);
     }
     /**
      * Show the form for creating a new resource.
@@ -115,6 +120,7 @@ class AdminCOntroller extends Controller
 
         return redirect('/admin')->with('success', 'User Updated');
     }
+    
      /**
      * Update the specified resource in storage.
      *

@@ -105,7 +105,7 @@
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-2">
                     <div class="text-right">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                       
                         
                         {{Form::submit('Update', ['class'=>'btn btn-primary'])}}
                 </div>

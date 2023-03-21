@@ -30,9 +30,15 @@ Route::middleware(['auth','is_admin'])->group(function(){
     Route::get('/available','App\Http\Controllers\PagesController@available');
     Route::get('posts/create','App\Http\Controllers\PostsController@create');
     Route::put('update/{id}','App\Http\Controllers\AdminCOntroller@UserUpdate')->name('user.update');
+    Route::put('posts/update/{id}','App\Http\Controllers\PostsController@update');
+    Route::delete('posts/Delete/{id}','App\Http\Controllers\PostsController@destroy');
+    Route::put('posts/store','App\Http\Controllers\PostsController@store')->name('posts.store');
+    //Route::resource('/posts','App\Http\Controllers\PostsController');
+    //Route::put('update/{id}','App\Http\Controllers\AdminCOntroller@PostsController@Update');
      Route::get('Admin/Delete/{id}','App\Http\Controllers\AdminCOntroller@Destroy');
     Route::get('Admin/AllRequest','App\Http\Controllers\AdminCOntroller@index');
     Route::get('Admin/RejectedRequest','App\Http\Controllers\AdminCOntroller@RejectedPage');
+    Route::get('Admin/Software','App\Http\Controllers\AdminCOntroller@SoftwarePage');
     Route::get('Admin/InProgressRequest','App\Http\Controllers\AdminCOntroller@InProgressPage');
     Route::get('Admin/AcceptedRequest','App\Http\Controllers\AdminCOntroller@AcceptedPage');
     Route::get('Admin/SubmittedRequest','App\Http\Controllers\AdminCOntroller@SubmittedPage');
@@ -50,8 +56,9 @@ Route::middleware(['auth','is_loggedin'])->group(function(){
     Route::get('/my_requests','App\Http\Controllers\RequestsController@index');
     Route::get('/room','App\Http\Controllers\PagesController@room');
     Route::get('/request','App\Http\Controllers\PagesController@request');
+    Route::get('/posts/index','App\Http\Controllers\PostsController@index');
     Route::put('update/{id}','App\Http\Controllers\RequestsController@UserUpdate')->name('user.update');
-    Route::resource('/posts','App\Http\Controllers\PostsController');
+    #Route::resource('/posts','App\Http\Controllers\PostsController');
     Route::get('/edit_php/{id}','App\Http\Controllers\RequestsController@edit');
     Route::get('/my_profile','App\Http\Controllers\PagesController@UserPage');
     Route::resource('/requests','App\Http\Controllers\RequestsController');

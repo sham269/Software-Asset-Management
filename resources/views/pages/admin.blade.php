@@ -54,7 +54,7 @@
           </div>
         </div>
       </div>
-   
+      
       <div class="col mb-3">
         <div class="card card bg-light mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 18rem;">
           <div class="card-header bg-success text-white ">Accepted Requests</div>
@@ -75,6 +75,18 @@
             <p class="card-text">Users Registered</p>
             <div class="card-footer bg-transparent border-success">
               <a href="Admin/User" class="btn btn-dark">View all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="card bg-light mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 18rem;">
+          <div class="card-header bg-info">Software</div>
+          <div class="card-body">
+            <h5 class="card-title">{{$software_directory->count()}}</h5>
+            <p class="card-text">Software Added</p>
+            <div class="card-footer bg-transparent bg-info">
+              <a href="Admin/Software" class="btn btn-info">View all</a>
             </div>
           </div>
         </div>

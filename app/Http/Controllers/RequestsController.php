@@ -145,7 +145,7 @@ class RequestsController extends Controller
         return view('pages.Edit_request')->with('software',$software);
 
     }
-
+    
     /**
      * Update the specified resource in storage.
      *

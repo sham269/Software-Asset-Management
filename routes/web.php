@@ -22,7 +22,12 @@ Route::get('/', 'App\Http\Controllers\PagesController@index');
 // Route::get('/about',function(){
 //     return view('pages.about');
 // });
-
+Route::middleware(['auth','is_systemadmin'])->group(function(){
+    Route::get('Admin/User','App\Http\Controllers\AdminCOntroller@UserPage');
+    Route::get('/admin','App\Http\Controllers\RequestsController@index');
+    Route::get('/Verified','App\Http\Controllers\AdminCOntroller@VerifyPage');
+   
+});
 
 Route::middleware(['auth','is_admin'])->group(function(){
     #Route::get('/admin','App\Http\Controllers\PagesController@admin');
@@ -46,9 +51,11 @@ Route::middleware(['auth','is_admin'])->group(function(){
     Route::resource('/Admin', 'App\Http\Controllers\AdminCOntroller');
 });
 Route::middleware(['auth','is_systemadmin'])->group(function(){
-    Route::get('Admin/User','App\Http\Controllers\AdminCOntroller@UserPage');
+    Route::get('/admin/User','App\Http\Controllers\AdminCOntroller@UserPage');
     Route::get('/admin','App\Http\Controllers\RequestsController@index');
     Route::get('/Verified','App\Http\Controllers\AdminCOntroller@VerifyPage');
+    Route::put('/admin/update/{id}','App\Http\Controllers\AdminCOntroller@UserUpdate');
+    Route::delete('/admin/delete/{id}','App\Http\Controllers\AdminCOntroller@destroy');
    
 });
 Route::middleware(['auth','is_loggedin'])->group(function(){

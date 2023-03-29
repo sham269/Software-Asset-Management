@@ -6,7 +6,7 @@
     @foreach($posts as $post)
   
         
-            @if($post->blacklisted =='["Blacklisted"]')
+            @if($post->blacklisted =="Blacklisted")
             <div class="card text-white bg-dark card-body my-2">
             <s><h3>{{$post->Software_Name}} - Blacklisted</s></h3>
             

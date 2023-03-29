@@ -48,10 +48,12 @@
           <div class="form-group">
             <label>Blacklisted?</label>
             @php 
-                $blacklist=json_decode($softwares->blacklisted)[0]
+                $blacklist=$softwares->blacklisted
+                
             @endphp
+          
           <select class="form-control" name="blacklisted" required="required">
-      
+           
             <option value= "Blacklisted" {{$blacklist == "Blacklisted" ? 'selected':" "}}>Yes</option>
             <option value= "Not-Blacklisted" {{$blacklist == "Not-Blacklisted" ? 'selected':" "}}>No</option>
         

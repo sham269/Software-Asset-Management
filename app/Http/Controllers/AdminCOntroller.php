@@ -53,49 +53,6 @@ class AdminCOntroller extends Controller
         $software = Post::all();
         return view('Admin_Pages.software_directory')->with('software',$software);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        
-    }
      /**
      * Update the specified resource in storage.
      *
@@ -154,7 +111,7 @@ class AdminCOntroller extends Controller
             
             }
     }
-}
+    }
 
     /**
      * Update the specified resource in storage.
@@ -213,6 +170,6 @@ class AdminCOntroller extends Controller
         //
         $user = User::find($id);
         $user-> delete();
-        return redirect('/Admin/User')->with('success', 'Request Deleted');
+        return redirect('/admin/User')->with('success', 'Request Deleted');
     }
 }

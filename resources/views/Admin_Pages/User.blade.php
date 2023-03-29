@@ -24,9 +24,15 @@
         <td>{{$user->role}}</td>
         <td>{{$user->verified}}</td>
         <td>
+          @if($user->role=="Admin")
+          Actions forbidden
+          @elseif(Auth::User()->role=="Admin")
+          <button type="button" class="assign-modal btn btn-sm btn-success" data-toggle="modal" data-target="#editDealModal{{ $user->id }}" data-id="{{ $user->id }}">Edit</button>
+          @else
             <button type="button" class="assign-modal btn btn-sm btn-success" data-toggle="modal" data-target="#editDealModal{{ $user->id }}" data-id="{{ $user->id }}">Edit</button>
             <button type="button" class="assign-modal btn btn-sm btn-danger" data-toggle="modal" data-target="#DeleteModal{{ $user->id }}" data-id="{{ $user->id }}">Delete</button>
-        </td>
+        @endif
+          </td>
       </tr>
     </tbody>
     <div class="modal fade bd-example-modal-lg " id="editDealModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="editDealModal{{ $user->id }}" aria-hidden="true">
@@ -76,17 +82,17 @@
             
             <div class="modal-content">
                <h1 class="text-center mt-5"> Confirmation </h1>
-               <p class="text-center"> Are you sure you want to delete this user? </p>
+               <p class="text-center"> Are you sure you want to delete {{$user->name}}? </p>
                <div class="container text-center">
                <img src="{{asset('build/assets/check-green.gif')}}" style="width: 60px;height:80px" class="card-img-top" >
                </div>
             <div class="container text-center mt-5">
-               <button type="button" class="btn btn-small btn-success "data-dismiss="modal">
+               <button type="button" class="btn btn-small btn-success mb-2 "data-dismiss="modal">
                 Cancel
               </button>
               {!! Form::open(['action' => ['App\Http\Controllers\AdminCOntroller@destroy',$user->id],'method'=>'DELETE','class'=>'float-end']) !!}
 
-              {{Form::submit('Delete', ['class'=>'btn btn-danger'])}}
+              {{Form::submit('Delete', ['class'=>'btn btn-danger mb-2'])}}
               {!! Form::close() !!}
             </div>
             </div>

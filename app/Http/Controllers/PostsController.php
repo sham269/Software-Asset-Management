@@ -42,12 +42,12 @@ class PostsController extends Controller
             'Software_Information'=> 'required',
             'blacklisted' => 'required'
         ]);
-
+    
         $post = new Post;
         $post->Software_Name = $request->input('Software_Name');
         $post->Software_Information = $request->input('Software_Information');
-        $post['category'] = $request->input('blacklisted');
-    
+        $post->blacklisted = $request->input('blacklisted')[0];
+        
         $post->save();
         //return 123;
         return redirect('/Admin/Software')->with('success', 'Software Added');
@@ -96,7 +96,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->Software_Name = $request->input('Software_Name');
         $post->Software_Information = $request->input('Software_Information');
-        $software['category'] = $request->input('blacklisted');
+        $post->blacklisted = $request->input('blacklisted');
         $post->save();
         //return 123;
         return redirect('/Admin/Software')->with('success', 'Post Updated');

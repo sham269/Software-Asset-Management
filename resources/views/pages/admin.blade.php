@@ -101,7 +101,7 @@
             <h5 class="card-title">{{Auth::user()->count()}}</h5>
             <p class="card-text">Users Registered</p>
             <div class="card-footer bg-transparent border-success">
-              <a href="Admin/User" class="btn btn-dark">View all</a>
+              <a href="admin/User" class="btn btn-dark">View all</a>
             </div>
           </div>
         </div>

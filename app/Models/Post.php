@@ -17,14 +17,14 @@ class Post extends Model
 
     //Timestamps
     public $timestamps = true;
-    public function setCategoryAttribute($value)
-    {
-        $this->attributes['blacklisted'] = json_encode($value);
-    }
-    public function getCategoryAttribute($value)
-    {
-        return $this->attributes['blacklisted'] = json_decode($value);
-    }
+    // public function setCategoryAttribute($value)
+    // {
+    //     $this->attributes['blacklisted'] = json_encode($value);
+    // }
+    // public function getCategoryAttribute($value)
+    // {
+    //     return $this->attributes['blacklisted'] = json_decode($value);
+    // }
     public function user(){
         return $this->belongsTo('App\User');
     }

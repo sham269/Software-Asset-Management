@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h1 class="text-center"> Users </h1>
-
+    <a class="btn btn-outline-primary float-right" href="/admin" role="button">Go Back</a>
 <table class="table table-hover">
     <thead>
       <tr>

@@ -133,7 +133,7 @@ class AdminCOntroller extends Controller
                 
                 $software->Request_Stage='In Progress';
                 $software->save();
-                return redirect('/admin')->with('success', 'Request Rejected');
+                return redirect('/admin')->with('success', 'Request Put in Progress');
             }
             if(isset($sub["Reject"])){
                 $software = Requests::find($id);

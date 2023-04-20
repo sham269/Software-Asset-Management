@@ -108,7 +108,7 @@
       </div>
       <div class="col mb-3">
         <div class="card card bg-light mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 18rem;">
-          <div class="card-header bg-danger text-white ">Users</div>
+          <div class="card-header bg-danger text-white ">Users to Verify</div>
           <div class="card-body">
             <h5 class="card-title">{{$usercount->count()}}</h5>
             <p class="card-text">Need to be Accepted</p>

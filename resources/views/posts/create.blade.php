@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             {{Form::label('Software_Information','Software Information')}}
-            {{Form::textarea('Software Information','',['class'=>'form-control','placeholder'=>'Enter Software Reason'])}}
+            {{Form::textarea('Software Information','',['class'=>'form-control','placeholder'=>'Enter Software Information'])}}
         </div>
         <div class="form-group" id="buttons">
             <label><strong>Blacklisted :</strong></label><br>
